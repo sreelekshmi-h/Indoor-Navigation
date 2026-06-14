@@ -1,0 +1,31 @@
+{
+    "nodes": [
+        {
+            "id": "room101",
+            "x": 100,
+            "y": 150
+        },
+        {
+            "id": "room102",
+            "x": 250,
+            "y": 150
+        },
+        {
+            "id": "room204",
+            "x": 400,
+            "y": 300
+        }
+    ],
+    "edges": [
+        {
+            "source": "room101",
+            "target": "room102",
+            "weight": 5
+        },
+        {
+            "source": "room102",
+            "target": "room204",
+            "weight": 8
+        }
+    ]
+}

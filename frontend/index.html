@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indoor Navigation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Indoor Navigation System</h1>
+
+    <div class="controls">
+
+        <label>Start Room</label>
+        <input type="text" id="start" value="room101">
+
+        <label>Destination</label>
+        <input type="text" id="end" value="room204">
+
+        <button onclick="findRoute()">
+            Find Route
+        </button>
+
+    </div>
+
+    <div class="map-container">
+
+        <canvas
+            id="mapCanvas"
+            width="800"
+            height="500">
+        </canvas>
+
+    </div>
+
+    <div id="result"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/pathfinder.js"></script>
+
+</body>
+</html>
