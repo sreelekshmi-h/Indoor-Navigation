@@ -1,6 +1,10 @@
 # WayPoint 🧭
 
 WayPoint is a QR-assisted indoor navigation system that helps users find the shortest route inside buildings where GPS is unreliable or unavailable.
+<img width="947" height="479" alt="image" src="https://github.com/user-attachments/assets/ca97c82f-1538-423c-8fa4-f6fb90a0bfd4" />
+<img width="944" height="491" alt="image" src="https://github.com/user-attachments/assets/cced2cba-05c4-420c-b679-db4c221c858e" />
+
+
 
 The system models buildings as graphs and uses Dijkstra's algorithm to compute the shortest path between locations.
 ---
