@@ -1,4 +1,4 @@
-const API_URL = "https://indoor-navigation-2.onrender.com/graph"
+const API_URL = "https://indoor-navigation-2.onrender.com/graph";
 
 async function getGraph() {
 
