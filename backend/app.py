@@ -10,12 +10,6 @@ CORS(app)
 app.register_blueprint(graph_bp)
 app.register_blueprint(path_bp)
 
-@app.route("/test")
-def test():
-    return {"message": "working"}
-
-if __name__ == "__main__":
-    app.run(debug=True)
 @app.route("/")
 def home():
     return {
@@ -23,3 +17,10 @@ def home():
         "status": "Backend Running",
         "api": "/graph"
     }
+
+@app.route("/test")
+def test():
+    return {"message": "working"}
+
+if __name__ == "__main__":
+    app.run(debug=True)
