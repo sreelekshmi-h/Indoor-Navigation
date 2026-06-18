@@ -1,38 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Indoor Navigation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Indoor Navigation System</h1>
+    <div class="app-wrapper">
 
-    <div class="controls">
+        <header class="app-header">
+            <div class="header-inner">
+                <div class="header-brand">
+                    <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                    </svg>
+                    <div>
+                        <h1 class="brand-title">WayPoint</h1>
+                        <p class="brand-subtitle">Find your destination instantly</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-pill">
+                        <span class="stat-value" id="statRooms">25</span>
+                        <span class="stat-label">Rooms</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-value" id="statNodes">30</span>
+                        <span class="stat-label">Nodes</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="stat-value" id="statRoutes">42</span>
+                        <span class="stat-label">Routes</span>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-        <label>Start Room</label>
-        <input type="text" id="start" value="room101">
+        <main class="main-content">
 
-        <label>Destination</label>
-        <input type="text" id="end" value="room204">
+            <div class="sidebar">
 
-        <button onclick="findRoute()">
-            Find Route
-        </button>
+                <div class="card route-card">
+                    <h2 class="card-label">Plan your route</h2>
+
+                    <div class="field-group">
+                        <label class="field-label" for="start">
+                            <span class="field-dot field-dot--start"></span>
+                            From
+                        </label>
+                        <select id="start" class="field-select">
+                            <option value="room101">Room 101</option>
+                            <option value="room102">Room 102</option>
+                            <option value="room201">Room 201</option>
+                            <option value="room204">Room 204</option>
+                            <option value="lobby">Lobby</option>
+                            <option value="cafeteria">Cafeteria</option>
+                        </select>
+                    </div>
+
+                    <div class="field-connector">
+                        <span class="connector-line"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label class="field-label" for="end">
+                            <span class="field-dot field-dot--end"></span>
+                            To
+                        </label>
+                        <select id="end" class="field-select">
+                            <option value="room204" selected>Room 204</option>
+                            <option value="room101">Room 101</option>
+                            <option value="room102">Room 102</option>
+                            <option value="room201">Room 201</option>
+                            <option value="lobby">Lobby</option>
+                            <option value="cafeteria">Cafeteria</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-primary" onclick="findRoute()">
+                        Find Route
+                        <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="card result-card" id="result" style="display:none;">
+                    <h2 class="card-label">Route found</h2>
+                    <div class="route-path" id="routePath"></div>
+                    <div class="route-meta">
+                        <div class="route-meta-item">
+                            <svg viewBox="0 0 20 20" fill="currentColor" class="meta-icon">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span id="routeDistance" class="meta-value">— m</span>
+                        </div>
+                        <div class="route-meta-item">
+                            <svg viewBox="0 0 20 20" fill="currentColor" class="meta-icon">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                            <span id="routeTime" class="meta-value">— min</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="map-panel">
+                <div class="card map-card">
+                    <div class="map-header">
+                        <span class="map-label">Floor map — Level 1 & 2</span>
+                        <div class="map-legend">
+                            <span class="legend-dot legend-dot--node"></span>Room
+                            <span class="legend-dot legend-dot--route" style="margin-left:12px;"></span>Active route
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <canvas id="mapCanvas" width="700" height="420"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </main>
 
     </div>
-
-    <div class="map-container">
-
-        <canvas
-            id="mapCanvas"
-            width="800"
-            height="500">
-        </canvas>
-
-    </div>
-
-    <div id="result"></div>
 
     <script src="js/api.js"></script>
     <script src="js/map.js"></script>

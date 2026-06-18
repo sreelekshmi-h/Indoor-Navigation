@@ -1,31 +1,61 @@
 {
-    "nodes": [
-        {
-            "id": "room101",
-            "x": 100,
-            "y": 150
-        },
-        {
-            "id": "room102",
-            "x": 250,
-            "y": 150
-        },
-        {
-            "id": "room204",
-            "x": 400,
-            "y": 300
-        }
-    ],
-    "edges": [
-        {
-            "source": "room101",
-            "target": "room102",
-            "weight": 5
-        },
-        {
-            "source": "room102",
-            "target": "room204",
-            "weight": 8
-        }
-    ]
+  "nodes": [
+    {
+      "id": "room101",
+      "x": 100,
+      "y": 150
+    },
+    {
+      "id": "room102",
+      "x": 250,
+      "y": 150
+    },
+    {
+      "id": "room103",
+      "x": 250,
+      "y": 300
+    },
+    {
+      "id": "room104",
+      "x": 400,
+      "y": 150
+    },
+    {
+      "id": "room204",
+      "x": 550,
+      "y": 300
+    }
+  ],
+  "edges": [
+    {
+      "source": "room101",
+      "target": "room102",
+      "weight": 5
+    },
+    {
+      "source": "room102",
+      "target": "room104",
+      "weight": 4
+    },
+    {
+      "source": "room104",
+      "target": "room204",
+      "weight": 3
+    },
+    {
+      "source": "room101",
+      "target": "room103",
+      "weight": 8
+    },
+    {
+      "source": "room103",
+      "target": "room204",
+      "weight": 10
+    },
+    {
+      "source": "room102",
+      "target": "room103",
+      "weight": 2
+    }
+  ]
 }
